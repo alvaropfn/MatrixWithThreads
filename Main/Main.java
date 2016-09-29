@@ -10,7 +10,13 @@ public class Main
 	{
 		PApplet p = new PApplet();
 		MatrixPreparator mp = new MatrixPreparator(p);
-		MatrixOparator mo = new MatrixOparator();
+		MatrixOperator mo = new MatrixOperator();
+		MatrixOperatorThreads m1, m2;
+		m1 = new MatrixOperatorThreads(0, 10, 100);
+		m2 = new MatrixOperatorThreads(1, 10, 250);
+		
+		m1.start();
+		m2.start();
 		
 		/*ArrayList<ArrayList<Integer>> a, b, c;
 		
@@ -21,7 +27,7 @@ public class Main
 		mp.createMatrix(a, 0);
 		mp.createMatrix(b, 8);
 		 */
-		
+		/*
 		int[][] a, b, c;
 		
 		a = mp.createMatrix(0);
@@ -31,8 +37,9 @@ public class Main
 		mp.printMatrix(b);
 		p.println("===========");
 		c = mo.matrixInitializer(4, 4);
-		mo.normalMultiply(a, b, c);
+		mo.multiply(a, b, c);
 		mp.printMatrix(c);
+		*/
 	}
 
 }

@@ -2,18 +2,19 @@ package Main;
 
 import java.util.ArrayList;
 
-public class MatrixOparator 
+public class MatrixOperator 
 {
-	public void normalMultiply(
+	public void multiply(
 			ArrayList<ArrayList<Integer>> aMatrix,
 			ArrayList<ArrayList<Integer>> bMatrix,
 			ArrayList<ArrayList<Integer>> cMatrix)
 	{
 		int aLin = aMatrix.size();
 		int aCol = aMatrix.get(0).size();
+		int bLin = bMatrix.size();
 		int bCol = bMatrix.get(0).size();
 		
-		if(aLin != bCol)return;
+		if(aCol != bLin)return;
 		
 		matrixInitializer(cMatrix, aLin, bCol);
 		
@@ -24,19 +25,16 @@ public class MatrixOparator
 			{
 				for(int i = 0; i < aCol ; i ++)
 				{
-					//11036 elemento 0, 0
 					int temp = cLine.get(col);
 					temp += aMatrix.get(lin).get(i) * bMatrix.get(i).get(col);
 					cLine.set(col, temp); 
-					//System.out.println(temp);
-				}
-				
+				}	
 			}
 			cMatrix.set(lin, cLine);
 		}
 	}
 	
-	public void normalMultiply(int[][] a, int[][] b, int[][] c)
+	public void multiply(int[][] a, int[][] b, int[][] c)
 	{
 		
 		int aLin = a.length;
@@ -50,8 +48,8 @@ public class MatrixOparator
 			for(int col = 0; col < bCol; col++)
 				for(int i = 0; i < aCol; i++)
 					c[lin][col] += a[lin][i] * b[i][col];
-		
 	}
+	
 	
 	public void matrixInitializer(ArrayList<ArrayList<Integer>> matrix, int linOrder, int colOrder)
 	{
@@ -59,9 +57,7 @@ public class MatrixOparator
 		{
 			ArrayList<Integer> line = new ArrayList<Integer>();
 			for(int col = 0; col < colOrder; col++)
-			{
 				line.add(0);
-			}
 			matrix.add(line);
 		}
 	}
