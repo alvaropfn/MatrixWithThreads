@@ -69,4 +69,5 @@ public class MatrixOperator
 				result[lin][col] = 0;
 		return result;
 	}
+
 }

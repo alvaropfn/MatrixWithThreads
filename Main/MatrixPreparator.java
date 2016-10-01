@@ -12,28 +12,10 @@ public class MatrixPreparator
 	private final int lin = 0, col = 1;
 	private final String local = ".//src/Matrizes/";
 
-	public MatrixPreparator(PApplet p)
+	public MatrixPreparator()
 	{
-		this.p = p;
 		folder = new File(local);
 		files = folder.listFiles();
-	}
-
-	public void createMatrix(ArrayList<ArrayList<Integer>> result, int index)
-	{
-		String[] matrix = p.loadStrings(files[index]);
-		String[] order = p.splitTokens(matrix[0], " ");
-		int linOrder = Integer.parseInt(order[this.lin]);
-		int colOrder = Integer.parseInt(order[this.col]);
-
-		for(int lin = 1; lin <= linOrder; lin++)
-		{
-			ArrayList line = new ArrayList();
-			String[] temp = p.splitTokens(matrix[lin], " /t");
-			for(int col = 0; col < colOrder; col++)
-				line.add(Integer.parseInt(temp[col]));
-			result.add(line);
-		}
 	}
 	
 	public int[][] createMatrix(int index)
@@ -64,23 +46,6 @@ public class MatrixPreparator
 			p.println("["+i+"] " +f.toString().replaceFirst(local,""));
 			//p.println("["+i+"] " +f.toString());
 			i++;
-		}
-	}
-
-	public void printMatrix(ArrayList<ArrayList<Integer>> matrix)
-	{
-		int linOrder = matrix.size();
-		int colOrder = matrix.get(0).size();
-		for(int lin = 0; lin < linOrder; lin++)
-		{
-			for(int col = 0; col < colOrder; col++)
-			{
-				String pre = "["+lin+","+col+"]: ";
-				if(col != colOrder -1 )
-					p.print( pre+ matrix.get(lin).get(col) + " ");
-				else
-					p.println(pre+ matrix.get(lin).get(col));
-			}
 		}
 	}
 	
